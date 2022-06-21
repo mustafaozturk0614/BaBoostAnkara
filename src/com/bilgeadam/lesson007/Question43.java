@@ -2,7 +2,7 @@ package com.bilgeadam.lesson007;
 
 import java.util.Scanner;
 
-public class Questin43 {
+public class Question43 {
 
 	// Dışardan kaç sayı gireceksiniz 2 ,3
 	// iki tane toplama metodu eğer 2 sayı birtanseini çalıştırısın eğer
