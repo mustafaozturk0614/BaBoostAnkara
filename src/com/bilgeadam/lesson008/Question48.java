@@ -8,6 +8,9 @@ package com.bilgeadam.lesson008;
  * 5.method bir önceki methoddan dönen Dğerlerin ilk üç harfini alın ve sonuna ... 
  * nokta ekleyin Adn... Ady... gibi
  * 
+ *6.method bir önceki methoddan dönen dizide  B ile başlayan illerin başına 1-Blk gibi yazdıralım
+/ 7.method ikinci harfi a olanların  ilk değeri ve sadece ilk 3 harfini büyük yazdırın Çankırı->ÇAN
+ * 
  * 
  * 
  */
@@ -28,24 +31,54 @@ public class Question48 {
 //		plakalarıYazdır();
 //		plakaBul("Ankara", "Bolu", "Kars");
 
-		String[] yeniDizi = sesliHarfleriSil();
+//		String[] kısaltılmısDizi = sesliHarfleriSil();
+//		String[] yeniDizi = kisaltma(kısaltılmısDizi);
+//		bIleBaslayanlar(yeniDizi);
 
-		kisaltma(yeniDizi);
+		ikinciHarfeGöreSorgulama();
 
 	}
 
-	public static void kisaltma(String[] dizi) {
+	public static void ikinciHarfeGöreSorgulama() {
 
-		for (int i = 0; i < dizi.length; i++) {
+		for (int i = 0; i < iller.length; i++) {
 
-			if (dizi[i].length() > 2) {
-				System.out.println(dizi[i].substring(0, 3) + "...");
-
-			} else {
-				System.out.println(dizi[i] + "...");
+			if (iller[i].substring(1).startsWith("a")) {
+				System.out.println(iller[i] + "-->" + iller[i].substring(0, 3).toUpperCase());
 			}
 
 		}
+
+	}
+
+	public static void bIleBaslayanlar(String[] dizi) {
+
+		int count = 0;
+
+		for (String string : dizi) {
+			if (string.startsWith("B")) {
+				count++;
+				System.out.println(count + "-" + string.substring(0, 3));
+
+			}
+
+		}
+
+	}
+
+	public static String[] kisaltma(String[] dizi) {
+		String[] yeniDizi = new String[dizi.length];
+		for (int i = 0; i < dizi.length; i++) {
+
+			if (dizi[i].length() > 2) {
+				yeniDizi[i] = dizi[i].substring(0, 3) + "...";
+
+			} else {
+				yeniDizi[i] = dizi[i] + "...";
+			}
+
+		}
+		return yeniDizi;
 
 	}
 
