@@ -14,6 +14,6 @@ public class Bilgisayar {
 		anaKart = new Anakart();
 		anaKart.name = "Asus";
 		anaKart.model = "Atxx";
-
 	}
+
 }

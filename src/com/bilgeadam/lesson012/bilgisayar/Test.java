@@ -37,23 +37,43 @@ public class Test {
 //		usb.hız = 400;
 //		usb.tipi = "3.0";
 
-		Bilgisayar bilgisayar = new Bilgisayar();
-
-		bilgisayar.islemci = ıslemci;
-		bilgisayar.klavye = klavye;
-		bilgisayar.mouse = mouse;
-		bilgisayar.ram = ram;
-		bilgisayar.usb = new Usb();
-		bilgisayar.usb.tipi = "3.0";
-		bilgisayar.usb.hız = 400;
-		bilgisayar.anakartOlustur();
-
-		System.out.println(bilgisayar.ram.name);
-		System.out.println(bilgisayar.mouse.agırlık);
-		System.out.println(bilgisayar.islemci.name);
-		System.out.println(bilgisayar.anaKart.model);
-		System.out.println(bilgisayar.klavye.mekanikMi);
-		System.out.println(bilgisayar.usb.tipi);
+		MasaUstu masaUstu = new MasaUstu();
+		masaUstu.islemci = new Islemci();
+		masaUstu.islemci.islemciHızı = "500";
+		masaUstu.klavye = klavye;
+		masaUstu.mouse = mouse;
+		masaUstu.ram = ram;
+		masaUstu.usb = new Usb();
+		masaUstu.usb.tipi = "3.0";
+		masaUstu.usb.hız = 400;
+		masaUstu.anakartOlustur();
+		masaUstu.kasaBoyutu = 100;
+		System.out.println(masaUstu.ram.name);
+		System.out.println(masaUstu.mouse.agırlık);
+		System.out.println(masaUstu.islemci.name);
+		System.out.println(masaUstu.anaKart.model);
+		System.out.println(masaUstu.klavye.mekanikMi);
+		System.out.println(masaUstu.usb.tipi);
+		System.out.println(masaUstu.kasaBoyutu);
+		System.out.println("/////////////////////////////////");
+		Laptop laptop = new Laptop();
+		laptop.islemci = ıslemci;
+		laptop.klavye = klavye;
+		laptop.mouse = mouse;
+		laptop.ram = ram;
+		laptop.usb = new Usb();
+		laptop.usb.tipi = "3.0";
+		laptop.usb.hız = 400;
+		laptop.anakartOlustur();
+		laptop.bataryaKapasitesi = 15;
+		System.out.println(laptop.ram.name);
+		System.out.println(laptop.mouse.agırlık);
+		System.out.println(laptop.islemci.name);
+		System.out.println(laptop.anaKart.model);
+		System.out.println(laptop.klavye.mekanikMi);
+		System.out.println(laptop.usb.tipi);
+		System.out.println(laptop.bataryaKapasitesi);
+		laptop.bataryaKontrol();
 	}
 
 }
