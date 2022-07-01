@@ -22,7 +22,6 @@ package com.bilgeadam.lesson014.market;
  yüksek ise uzman muhendis 
  eğer 10000 stayjer
   dışarıdan girilen zam oranı + 250 tlde bonus alıcak
-
  * OfficeWorker classı 
  * 
  * iş unvanı
@@ -32,8 +31,7 @@ package com.bilgeadam.lesson014.market;
  * 8000 12000 arası ise çalşan
  * 1200  yuksek ise kidemli çalısan 
  * 8000 az ise stajyer 
- * 
- * 
+ *  
  * */
 public class Employee {
 
