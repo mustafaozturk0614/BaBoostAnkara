@@ -30,7 +30,7 @@ import java.util.Scanner;
 
 public class DatabaseManager {
 
-	IDatabase database;
+	IDatabase database;// new MysqlDatabase
 
 	public DatabaseManager(IDatabase database) {
 		this.database = database;

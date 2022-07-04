@@ -6,8 +6,13 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		DatabaseManager databaseManager;
+//		Databse databse = new MySqlDatabse();
 
+//		MySqlDatabse mySqlDatabse = (MySqlDatabse) databse;
+
+//		mySqlDatabse.yazdır();
+
+		DatabaseManager databaseManager;
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("1-Mysql");
@@ -18,9 +23,13 @@ public class Test {
 		case 1:
 			databaseManager = new DatabaseManager(new MySqlDatabse());
 			databaseManager.database.login();
+//			MySqlDatabse mySqlDatabse = (MySqlDatabse) databaseManager.database;
+//			mySqlDatabse.yazdır();
 			databaseManager.menu();
 			break;
+
 		case 2:
+
 			databaseManager = new DatabaseManager(new OracleDatabse());
 			databaseManager.database.login();
 			databaseManager.menu();

@@ -1,6 +1,6 @@
 package com.bilgeadam.lesson016.database;
 
-public class OracleDatabse implements IDatabase {
+public class OracleDatabse extends Databse implements IDatabase {
 
 	@Override
 	public void add() {

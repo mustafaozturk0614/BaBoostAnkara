@@ -1,6 +1,10 @@
 package com.bilgeadam.lesson016.database;
 
-public class MySqlDatabse implements IDatabase {
+public class MySqlDatabse extends Databse implements IDatabase {
+
+	public void yazdır() {
+		System.out.println("yazdır metodu");
+	}
 
 	@Override
 	public void add() {
