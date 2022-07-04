@@ -52,21 +52,26 @@ public class Manager {
 	}
 
 	public Person selectGender() {
+		Person person;
+
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("1-Erkek");
-		System.out.println("2-Kadın");
+
+		for (EGender gender : EGender.values()) {
+			System.out.println(gender.getNo() + "-" + gender.getName());
+		}
+
 		System.out.println("Lütfen seçim yapınız");
 		int input = scanner.nextInt();
 		scanner.nextLine();
 
 		switch (input) {
 		case 1:
-			Man man = new Man();
-			return enterInformation(man);
+			person = new Man();
+			return enterInformation(person);
 
 		case 2:
-			Woman woman = new Woman();
-			return enterInformation(woman);
+			person = new Woman();
+			return enterInformation(person);
 
 		default:
 			break;

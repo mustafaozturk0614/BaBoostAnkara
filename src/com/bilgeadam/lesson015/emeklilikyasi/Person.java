@@ -30,11 +30,11 @@ import java.time.LocalDateTime;
  * 
  * 
  */
-public class Person implements IRetirement {
+public abstract class Person implements IRetirement {
 
 	private String name;
 	private int birthYear;
-	private String gender;
+	private EGender gender;
 	private int retirementAge;
 
 	public Person() {
@@ -42,7 +42,7 @@ public class Person implements IRetirement {
 	}
 
 	public Person(String name, int birthYear) {
-		super();
+
 		this.name = name;
 		this.birthYear = birthYear;
 	}
@@ -63,11 +63,11 @@ public class Person implements IRetirement {
 		this.birthYear = birthYear;
 	}
 
-	public String getGender() {
+	public EGender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(EGender gender) {
 		this.gender = gender;
 	}
 
@@ -77,6 +77,12 @@ public class Person implements IRetirement {
 
 	public void setRetirementAge(int retirementAge) {
 		this.retirementAge = retirementAge;
+	}
+
+	public void yazdır() {
+
+		System.out.println("Person sınfından yazdırılıyor");
+
 	}
 
 	@Override

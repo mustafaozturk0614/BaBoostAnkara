@@ -4,13 +4,19 @@ public class Man extends Person {
 
 	public Man() {
 		setRetirementAge(65);
-		setGender("Erkek".toUpperCase());
+		setGender(EGender.MAN);
 	}
 
 	public Man(String name, int birthYear) {
 		super(name, birthYear);
 		setRetirementAge(65);
-		setGender("Erkek".toUpperCase());
+		setGender(EGender.MAN);
+
+	}
+
+	@Override
+	public void yazdır() {
+		super.yazdır();
 	}
 
 }
