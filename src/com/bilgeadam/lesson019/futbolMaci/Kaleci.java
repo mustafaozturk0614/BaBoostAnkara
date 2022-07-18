@@ -25,4 +25,10 @@ public class Kaleci extends Oyuncu {
 				+ ", getDogalForm()=" + getDogalForm() + ", getSans()=" + getSans() + "]";
 	}
 
+	@Override
+	public int pasSkor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

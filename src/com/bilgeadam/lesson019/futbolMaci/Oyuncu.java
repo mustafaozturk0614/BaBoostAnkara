@@ -2,7 +2,7 @@ package com.bilgeadam.lesson019.futbolMaci;
 
 import java.util.Random;
 
-public abstract class Oyuncu {
+public abstract class Oyuncu implements IOyuncu {
 	private Random random = new Random();
 	private String adSoyad;
 	private int formaNo;
@@ -28,6 +28,20 @@ public abstract class Oyuncu {
 		this.dogalForm = 50 + random.nextInt(51);
 		this.sans = 50 + random.nextInt(51);
 	}
+
+	@Override
+	public boolean pasVer() {
+		int skor = pasSkor();
+
+		if (skor > 65) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public abstract int pasSkor();
 
 	public Random getRandom() {
 		return random;
