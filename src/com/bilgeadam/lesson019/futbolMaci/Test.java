@@ -3,10 +3,8 @@ package com.bilgeadam.lesson019.futbolMaci;
 public class Test {
 
 	public static void main(String[] args) {
-		Takim takim = new Takim("Ev Sahibi");
-
-		takim.getOyunculistesi().forEach(s -> System.out.println(s.pasSkor() + "-" + s.pasVer()));
-
+		Mac mac = new Mac();
+		mac.oyna(mac.takimlarListesiList.get(0));
 	}
 
 }

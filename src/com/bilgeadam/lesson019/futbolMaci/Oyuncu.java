@@ -14,6 +14,7 @@ public abstract class Oyuncu implements IOyuncu {
 	private int kararlilik;
 	private int dogalForm;
 	private int sans;
+	private Takim takim;
 
 	public Oyuncu(String adSoyad, int formaNo) {
 		super();
@@ -29,6 +30,14 @@ public abstract class Oyuncu implements IOyuncu {
 		this.sans = 50 + random.nextInt(51);
 	}
 
+	public Takim getTakim() {
+		return takim;
+	}
+
+	public void setTakim(Takim takim) {
+		this.takim = takim;
+	}
+
 	@Override
 	public boolean pasVer() {
 		int skor = pasSkor();
@@ -41,7 +50,21 @@ public abstract class Oyuncu implements IOyuncu {
 
 	}
 
+	@Override
+	public boolean golVurusu(int kurtaris) {
+
+		int skor = golSkor(kurtaris);
+
+		if (skor > 68) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public abstract int pasSkor();
+
+	public abstract int golSkor(int kurtaris);
 
 	public Random getRandom() {
 		return random;

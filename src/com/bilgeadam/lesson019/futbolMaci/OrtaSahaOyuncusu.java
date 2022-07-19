@@ -74,4 +74,12 @@ public class OrtaSahaOyuncusu extends Oyuncu {
 		return skor;
 	}
 
+	@Override
+	public int golSkor(int kurtaris) {
+		int bonus = (int) ((getRandom().nextInt(1, 6)) * (getDogalForm() * 0.075));
+		int golSkor = (int) (getYetenek() * 0.2 + ozelYetenek * 0.2 + getSut() * 0.2 + ilkDokunus * 0.1
+				+ getKararlilik() * 0.1 + getSans() * 0.1 + getDogalForm() * 0.1) + bonus;
+		return golSkor - kurtaris;
+	}
+
 }

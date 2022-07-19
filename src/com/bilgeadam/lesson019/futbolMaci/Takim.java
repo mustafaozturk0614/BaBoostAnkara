@@ -15,12 +15,13 @@ public class Takim {
 		defansOlustur();
 		ortaSahaOlustur();
 		forvetOlustur();
-		Kaleci kaleci = new Kaleci("Kaleci", 1);
+
 	}
 
 	public void defansOlustur() {
 		for (int i = 0; i < 4; i++) {
 			DefansOyuncusu defansOyuncusu = new DefansOyuncusu("Defans " + (i + 1), i + 2);
+			defansOyuncusu.setTakim(this);
 			oyunculistesi.add(defansOyuncusu);
 		}
 
@@ -29,6 +30,7 @@ public class Takim {
 	public void ortaSahaOlustur() {
 		for (int i = 0; i < 4; i++) {
 			OrtaSahaOyuncusu ortaSahaOyuncusu = new OrtaSahaOyuncusu("OrtaSaha " + (i + 1), i + 6);
+			ortaSahaOyuncusu.setTakim(this);
 			oyunculistesi.add(ortaSahaOyuncusu);
 		}
 	}
@@ -36,6 +38,7 @@ public class Takim {
 	public void forvetOlustur() {
 		for (int i = 0; i < 2; i++) {
 			ForvetOyuncusu forvetOyuncusu = new ForvetOyuncusu("Forvet " + (i + 1), i + 10);
+			forvetOyuncusu.setTakim(this);
 			oyunculistesi.add(forvetOyuncusu);
 		}
 	}
@@ -49,6 +52,14 @@ public class Takim {
 	}
 
 	public Kaleci getKaleci() {
+		Kaleci kaleci = new Kaleci("Kaleci", 1);
+		kaleci.setTakim(this);
+		return kaleci;
+	}
+
+	public Kaleci kaleciOlustur() {
+		Kaleci kaleci = new Kaleci("Kaleci", 1);
+		kaleci.setTakim(this);
 		return kaleci;
 	}
 

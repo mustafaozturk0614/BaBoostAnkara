@@ -4,4 +4,6 @@ public interface IOyuncu {
 
 	boolean pasVer();
 
+	boolean golVurusu(int kurtaris);
+
 }

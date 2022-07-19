@@ -65,4 +65,14 @@ public class ForvetOyuncusu extends Oyuncu {
 
 	}
 
+	@Override
+	public int golSkor(int kurtaris) {
+		int bonus = (int) ((getRandom().nextInt(1, 5)) * (getDogalForm() * 0.075));
+		int golSkor = (int) (getYetenek() * 0.2 + ozelYetenek * 0.2 + getSut() * 0.1 + ilkDokunus * 0.1
+				+ getKararlilik() * 0.1 + getSans() * 0.1 + kafa * 0.1 + bitiricilik * 0.2 + getDogalForm() * 0.1)
+				+ bonus;
+
+		return golSkor - kurtaris;
+	}
+
 }
