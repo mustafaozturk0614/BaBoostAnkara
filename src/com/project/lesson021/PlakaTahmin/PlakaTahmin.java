@@ -1,4 +1,4 @@
-package com.project.PlakaTahmin.src;
+package com.project.lesson021.PlakaTahmin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
