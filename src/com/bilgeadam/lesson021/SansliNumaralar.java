@@ -1,4 +1,4 @@
-package com.project.lesson021;
+package com.bilgeadam.lesson021;
 
 import java.util.ArrayList;
 import java.util.Collections;
