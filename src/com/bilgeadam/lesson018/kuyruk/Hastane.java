@@ -1,7 +1,9 @@
 package com.bilgeadam.lesson018.kuyruk;
 
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class Hastane {
 
@@ -17,15 +19,26 @@ public class Hastane {
 		acilServis.offer(new Hasta("Okan", "Apandisit"));
 		acilServis.offer(new Hasta("Orhan", "Yanık"));
 		acilServis.offer(new Hasta("Merve", "Yanık"));
-		acilServis.offer(new Hasta("Gizem", "Bas Agırıs"));
+		acilServis.offer(new Hasta("Gizem", "Bas Agrısı"));
 
 //		acilServis.forEach(s -> System.out.println(s));
 
-		while (!acilServis.isEmpty()) {
-			System.out.println("************************");
-			System.out.println(acilServis.poll());
-			System.out.println("************************");
+//		while (!acilServis.isEmpty()) {
+//			System.out.println("************************");
+//			System.out.println(acilServis.poll());
+//			System.out.println("************************");
+//
+//		}
 
+		List<String> şikayetlerList = acilServis.stream().map(s -> {
+			if (s.getSikayet().equals("Bas Agrısı")) {
+				s.setSikayet("Agrı");
+			}
+			return s.getSikayet();
+		}).collect(Collectors.toList());
+
+		for (String string : şikayetlerList) {
+			System.out.println(string);
 		}
 
 	}

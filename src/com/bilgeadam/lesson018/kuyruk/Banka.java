@@ -1,7 +1,9 @@
 package com.bilgeadam.lesson018.kuyruk;
 
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 /*
  * Musteri kuyrugu olusturalaım öncelikli 
@@ -21,11 +23,15 @@ public class Banka {
 
 		int i = 1;
 
-		while (!musteriKuyrugu.isEmpty()) {
-			System.out.println("-----------------");
-			System.out.println(i + "sırada " + musteriKuyrugu.poll());
+//		while (!musteriKuyrugu.isEmpty()) {
+//			System.out.println("-----------------");
+//			System.out.println(i + "sırada " + musteriKuyrugu.poll());
+//
+//		}
 
-		}
+		List<Musteri> musteris = musteriKuyrugu.stream().filter(s -> s.yas > 60).collect(Collectors.toList());
+		musteriKuyrugu.stream().map(s -> s.yas > 60).collect(Collectors.toList());
+		musteris.forEach(System.out::println);
 
 	}
 }
