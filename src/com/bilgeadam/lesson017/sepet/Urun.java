@@ -1,20 +1,35 @@
 package com.bilgeadam.lesson017.sepet;
 
-public enum Urun {
-	Cips(20), Kola(15), Şeker(60), Yağ(200), Un(50), Ekmek(5), Çay(60), Yumurta(14), Yoğurt(22), Süt(12);
+public class Urun {
 
-	int fiyat;
+	private String name;
+	private double price;
 
-	Urun(int fiyat) {
-		this.fiyat = fiyat;
+	public Urun(String name, double price) {
+		super();
+		this.name = name;
+		this.price = price;
 	}
 
-	public int getFiyat() {
-		return fiyat;
+	@Override
+	public String toString() {
+		return "Urun [name=" + name + ", price=" + price + "]";
 	}
 
-	public void setFiyat(int fiyat) {
-		this.fiyat = fiyat;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }

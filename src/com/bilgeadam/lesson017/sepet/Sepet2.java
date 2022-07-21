@@ -1,9 +1,12 @@
 package com.bilgeadam.lesson017.sepet;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /*
  * 
@@ -21,16 +24,85 @@ import java.util.Scanner;
 
 public class Sepet2 {
 
-	Urun product[] = Urun.values();
-	Map<Urun, Integer> sepet;
+	EUrun product[] = EUrun.values();
+	Map<String, Integer> sepetMap = new HashMap<String, Integer>();
+	List<Urun> urunler = new ArrayList<Urun>();
+	Map<String, Double> urunMap = new HashMap<String, Double>();
 
 	public Sepet2() {
-		sepet = new LinkedHashMap<>();
+		urunOlustur();
+		urunfiyatMapOlustur();
+	}
+
+	public void urunleriListe() {
+
+		urunler.forEach(System.out::println);
+
+	}
+
+	public void toplam() {
+
+		List<Double> fiyatlar = sepetMap.entrySet().stream().map(s -> {
+
+			return urunMap.get(s.getKey()) * s.getValue();
+
+		}).collect(Collectors.toList());
+
+		Double toplam = fiyatlar.stream().reduce((s1, s2) -> s1 + s2).get();
+		System.out.println("Sepetin toplamı= " + toplam);
+
+	}
+
+	public void urunOlustur() {
+
+		Arrays.asList(product).stream().forEach((t) -> urunler.add(new Urun(t.name(), t.fiyat)));
+//		urunler = Arrays.asList(product).stream().map(s -> new Urun(s.name(), s.fiyat)).collect(Collectors.toList());
+//		urunler.forEach(s -> System.out.println(s.getName()));
+	}
+
+	public void urunfiyatMapOlustur() {
+		urunMap = urunler.stream().collect(Collectors.toMap(s -> s.getName(), t -> t.getPrice()));
+
+//		urunMap.entrySet().forEach(System.out::println);
+
+	}
+
+	public void sepetiGoster2() {
+		sepetMap.entrySet().forEach(s -> System.out.println(s));
+
+		toplam();
+
+		//
+		double result = sepetMap.entrySet().stream().collect(Collectors.averagingDouble(s -> s.getValue()));
+		System.out.println(result);
+	}
+
+	public void urunekle2() {
+		Scanner scanner = new Scanner(System.in);
+		String urun = scanner.nextLine();
+
+		if (sepetMap.containsKey(urun)) {
+
+			sepetMap.replace(urun, sepetMap.get(urun) + 1);
+			System.out.println(urun + " Sepete eklendi");
+
+		} else {
+			if (urunMap.containsKey(urun)) {
+				sepetMap.put(urun, 1);
+				System.out.println(urun + " Sepete eklendi");
+			} else {
+				System.out.println("Urun Bulunamadı");
+			}
+		}
+
 	}
 
 	public static void main(String[] args) {
 		Sepet2 sepet = new Sepet2();
+//		sepet.fiyatı50denBuyukolanlar();
 		sepet.menu();
+//		sepet.urunOlustur();
+//		sepet.urunfiyatMapOlustur();
 
 	}
 
@@ -46,13 +118,16 @@ public class Sepet2 {
 			input = scanner.nextInt();
 			switch (input) {
 			case 1:
-				urunleriGoster(product);
+				urunleriListe();
 				break;
 			case 2:
-				urunEkle(sepet);
+				urunekle2();
 				break;
 			case 3:
-				sepetGöster(sepet);
+				sepetiGoster2();
+				break;
+			case 4:
+				fiyatı50denBuyukolanlar();
 				break;
 			default:
 				break;
@@ -62,44 +137,13 @@ public class Sepet2 {
 
 	}
 
-	private void urunleriGoster(Urun[] urunler) {
+	public void fiyatı50denBuyukolanlar() {
 
-		for (int i = 0; i < urunler.length; i++) {
-
-			System.out.println(i + 1 + "- " + urunler[i]);
-
-		}
-
-	}
-
-	public void urunEkle(Map<Urun, Integer> sepet) {
-
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Lütfen ürün numarasınız giriniz");
-		int input = scanner.nextInt();
-		Urun urun = product[input - 1];
-		if (sepet.containsKey(urun)) {
-
-			sepet.replace(urun, sepet.get(urun) + 1);
-		} else {
-			sepet.put(urun, 1);
-		}
-
-	}
-
-	public void sepetGöster(Map<Urun, Integer> sepet) {
-
-		System.out.println("======Spetimdeki Ürünler=======");
-		System.out.println("------------------------------");
-		int toplam = 0;
-		for (Entry<Urun, Integer> urun : sepet.entrySet()) {
-			int tutar = urun.getValue() * urun.getKey().fiyat;
-			toplam += tutar;
-			System.out.println(urun.getKey() + "-" + "adet " + urun.getValue() + " tutar" + tutar);
-
-		}
-		System.out.println("------------------------------");
-		System.out.println("Toplam tutar " + toplam);
+		List<Urun> liste = urunler.stream().filter(s -> s.getPrice() > 50).collect(Collectors.toList());
+		double result = liste.stream().collect(Collectors.averagingDouble(Urun::getPrice));
+		double result2 = liste.stream().collect(Collectors.averagingDouble(s -> s.getPrice()));
+		System.out.println(result);
+		System.out.println(result2);
 	}
 
 }
