@@ -5,12 +5,21 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class Test {
+/*
+ * 
+ *  urun clasımıza Son kullanma tarihi Localdate
+ * urun yarat fonksiyonun son kullanma tarihini de alıp ona göre urun yaratacağız 
+ * 
+ * urun listesi uzerinden once 
+ * 1- son kullnma tarihi geçmiş urunleri ayrı bir listeye ekleyeceğiz;(stream)
+ * 2- urun listemizdeki urunlere %30 zam yapalım ve bunu zamlı urun listesi diye bir listeye ekleyeim(stream
+ */
+public class UrunTest {
 
 	List<Urun> urunList = new ArrayList<Urun>();
 
 	public static void main(String[] args) {
-		Test test = new Test();
+		UrunTest test = new UrunTest();
 
 		for (int i = 0; i < 3; i++) {
 //			Urun urun = test.urunYarat();

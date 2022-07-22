@@ -11,6 +11,9 @@ package com.bilgeadam.lesson021;
  *  koşul oluşturacağız eğer urunun ismi yok ise veya urunun fiyatı 0 dan küçük ise bize null 
  *  eğer ikisi bu kontrolleri geçiyorsa bize yeni bir urun yaratıp o urunu donsun 
  * 
+ * 
+ * Son kullanma tarihi Localdate
+ * 
  */
 public class Urun {
 
