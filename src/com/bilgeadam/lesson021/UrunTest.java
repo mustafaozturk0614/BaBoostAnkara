@@ -78,7 +78,7 @@ public class UrunTest {
 			urun = null;
 			return Optional.ofNullable(urun);
 		} else {
-
+//			urun = new Urun(isim, fiyat);
 			return Optional.of(urun);
 		}
 

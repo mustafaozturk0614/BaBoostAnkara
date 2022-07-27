@@ -2,41 +2,50 @@ package com.bilgeadam.lesson024.okulYonetim;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class OgrenciManager {
 
 	static Scanner scanner = new Scanner(System.in);
 
-	public void isimKontrol() {
+	public Optional<Ogrenci> ogrenciOlustur() {
 
-		System.out.println("Lütfen isminizi giriniz");
-		String isim = scanner.nextLine();
-		if (isim.length() < 3) {
-			try {
-				throw new IsımException("İsminizin  en az 3 karakterden oluşmalıdır");
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-
+		try {
+			String isim = isimKontrol();
+			LocalDate date = yasKontrol();
+			return Optional.ofNullable(new Ogrenci(isim, date));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return Optional.empty();
 		}
 
 	}
 
-	public void yasKontrol() {
+	public String isimKontrol() {
+
+		System.out.println("Lütfen isminizi giriniz");
+		String isim = scanner.nextLine();
+		if (isim.length() < 3) {
+
+			throw new IsımException("İsminizin  en az 3 karakterden oluşmalıdır");
+		}
+
+		return isim;
+	}
+
+	public LocalDate yasKontrol() {
 
 		LocalDate date = Utils.stringToLocalDateKontol("LütfenYaşınızı giriniz");
 
 		int yas = yasHesapla(date);
 
 		if (yas < 8) {
-			try {
-				throw new YasException("Yasınız 8 den kucuk olmamalıdır.");
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
 
+			throw new YasException("Yasınız 8 den kucuk olmamalıdır.");
 		}
+
+		return date;
 	}
 
 	private int yasHesapla(LocalDate date) {
@@ -72,14 +81,17 @@ public class OgrenciManager {
 //		ogrenciManager.isimKontrol();
 //		ogrenciManager.yasKontrol();
 
-		Double[] notlar = new Double[3];
+//		Double[] notlar = new Double[3];
+//
+//		try {
+//			ogrenciManager.notKontrol(notlar);
+//		} catch (NotlarException2 e) {
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
+//		}
 
-		try {
-			ogrenciManager.notKontrol(notlar);
-		} catch (NotlarException2 e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
+		System.out.println(ogrenciManager.ogrenciOlustur());
+		;
 
 		System.out.println("Burası Çalıştı");
 	}
