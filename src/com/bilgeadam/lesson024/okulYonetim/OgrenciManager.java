@@ -10,7 +10,6 @@ public class OgrenciManager {
 	static Scanner scanner = new Scanner(System.in);
 
 	public Optional<Ogrenci> ogrenciOlustur() {
-
 		try {
 			String isim = isimKontrol();
 			LocalDate date = yasKontrol();
@@ -19,7 +18,17 @@ public class OgrenciManager {
 			System.out.println(e.getMessage());
 			return Optional.empty();
 		}
+	}
 
+	public Optional<Ogrenci> ogrenciOlustur2(String[] array) {
+		try {
+//			String isim = isimKontrol();
+//			LocalDate date = yasKontrol();
+			return Optional.ofNullable(new Ogrenci(isimKontrol2(array[0]), yasKontrol2(array[1])));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return Optional.empty();
+		}
 	}
 
 	public String isimKontrol() {
@@ -32,6 +41,36 @@ public class OgrenciManager {
 		}
 
 		return isim;
+	}
+
+	public String isimKontrol2(String isim) {
+
+		if (isim.length() < 3) {
+
+			throw new IsımException("İsminizin  en az 3 karakterden oluşmalıdır");
+		}
+
+		return isim;
+	}
+
+	public LocalDate yasKontrol2(String string) {
+
+		LocalDate date = null;
+
+		try {
+			date = LocalDate.parse(string);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		int yas = yasHesapla(date);
+
+		if (yas < 8) {
+
+			throw new YasException("Yasınız 8 den kucuk olmamalıdır.");
+		}
+
+		return date;
 	}
 
 	public LocalDate yasKontrol() {
